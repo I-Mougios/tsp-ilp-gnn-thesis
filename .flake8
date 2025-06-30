@@ -1,0 +1,7 @@
+[flake8]
+max-line-length = 120
+
+# McCabe complexity
+max-complexity = 11
+
+extend-ignore=B901,E203,E226,E302,E722,S101,S311,I004,N818,T002,T003

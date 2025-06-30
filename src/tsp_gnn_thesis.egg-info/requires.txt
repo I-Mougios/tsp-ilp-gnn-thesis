@@ -1,0 +1,17 @@
+
+[dev]
+black[jupyter]
+isort
+flake8
+flake8-pyproject
+flake8-bandit
+flake8-bugbear
+flake8-builtins
+flake8-comprehensions
+flake8-eradicate
+flake8-implicit-str-concat
+flake8-print
+pep8-naming
+pre-commit
+commitizen
+jupyter

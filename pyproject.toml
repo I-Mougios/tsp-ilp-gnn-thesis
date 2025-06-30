@@ -1,0 +1,62 @@
+# pyproject.toml
+[project]
+name = "tsp-gnn-thesis"
+version = "0.1.0"
+description = "Master's thesis: Solving TSP with ILP-GNNs"
+authors = [{name = "Ioannis Mougios"}]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = [
+    "black[jupyter]",
+    "isort",
+    "flake8",
+    "flake8-pyproject",
+    "flake8-bandit",
+    "flake8-bugbear",
+    "flake8-builtins",
+    "flake8-comprehensions",
+    "flake8-eradicate",
+    "flake8-implicit-str-concat",
+    "flake8-print",
+    "pep8-naming",
+    "pre-commit",
+    "commitizen",
+    "jupyter",
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+exclude = '''
+/(
+  \.toml
+  |\.sh
+  |\.git
+  |\.ini
+  |\.json
+  |\.md
+  |\.venv
+)/
+'''  # Files Black will ignore
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+src_paths = ["src"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+tag_format = "v$version"
+version_files = [
+    "pyproject.toml:version"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# tooling config for black, isort, flake8, commitizen ...
