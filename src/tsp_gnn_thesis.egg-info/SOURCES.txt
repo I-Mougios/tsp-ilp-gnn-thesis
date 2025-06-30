@@ -1,6 +1,0 @@
-pyproject.toml
-src/tsp_gnn_thesis.egg-info/PKG-INFO
-src/tsp_gnn_thesis.egg-info/SOURCES.txt
-src/tsp_gnn_thesis.egg-info/dependency_links.txt
-src/tsp_gnn_thesis.egg-info/requires.txt
-src/tsp_gnn_thesis.egg-info/top_level.txt
