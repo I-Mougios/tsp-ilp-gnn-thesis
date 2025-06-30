@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: tsp_mongo
+    ports:
+      - "27017:27017"
+    env_file:
+      - .src/container/mongo.env
+    volumes:
+      - tsp_data:/data/db
+  tsp:
+    build:
+      context: .src/container/
+      dockerfile: Dockerfile
+    container_name: tsp
+    volumes:
+      - ./tsp:/app/tsp:ro # Bind all the source code of tsp solver
+      - ./container:/app/container
+    depends_on:
+      - mongodb
+volumes:
+  tsp_data:
