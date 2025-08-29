@@ -1,8 +1,6 @@
 import sys
 import os
 from pathlib import Path
-project_dir = Path(__file__).parent.parent.resolve()
-sys.path.append(str(project_dir))
 import numpy as np
 from dotenv import load_dotenv
 from pymongo import MongoClient
