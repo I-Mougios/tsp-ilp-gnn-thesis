@@ -4,8 +4,9 @@ services:
     container_name: tsp_mongo
     ports:
       - "27017:27017"
-    env_file:
-      - .src/container/mongo.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
     volumes:
       - tsp_data:/data/db
   tsp:
@@ -14,7 +15,7 @@ services:
       dockerfile: Dockerfile
     container_name: tsp
     volumes:
-      - ./tsp:/app/tsp:ro # Bind all the source code of tsp solver
+      - ./tsp:/app/tsp:ro
       - ./container:/app/container
     depends_on:
       - mongodb

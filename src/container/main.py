@@ -1,6 +1,8 @@
+import sys
 import os
 from pathlib import Path
-
+project_dir = Path(__file__).parent.parent.resolve()
+sys.path.append(str(project_dir))
 import numpy as np
 from dotenv import load_dotenv
 from pymongo import MongoClient
@@ -12,8 +14,8 @@ from tsp import TSP, generate_clustered_tsp_data
 project_dir = Path(__file__).parent.parent.resolve()
 env_path = project_dir / "container" / "mongo.env"
 load_dotenv(env_path)
-mongo_username = os.getenv("MONGO_INITDB_ROOT_USERNAME")
-mongo_password = os.getenv("MONGO_INITDB_ROOT_PASSWORD")
+mongo_username = os.getenv("MONGO_INITDB_ROOT_USERNAME", "root")
+mongo_password = os.getenv("MONGO_INITDB_ROOT_PASSWORD", "secret")
 
 # Both application and MongoDB run on docker container
 # then I just use the name of the service and no need to expose any port
@@ -33,8 +35,8 @@ db_name = "tsp_database"  # Database name
 db = client[db_name]  # Select database
 tsp_collection = db["tsp_solutions"]  # Select collection
 
-number_of_uniform_instances = 15000
-number_of_clustered_instances = 15000
+number_of_uniform_instances = 5000
+number_of_clustered_instances = 5000
 
 for size in [20, 35, 50]:
 
