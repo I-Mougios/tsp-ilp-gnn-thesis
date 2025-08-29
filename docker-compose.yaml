@@ -9,15 +9,5 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: secret
     volumes:
       - tsp_data:/data/db
-  tsp:
-    build:
-      context: .src/container/
-      dockerfile: Dockerfile
-    container_name: tsp
-    volumes:
-      - ./tsp:/app/tsp:ro
-      - ./container:/app/container
-    depends_on:
-      - mongodb
 volumes:
   tsp_data:

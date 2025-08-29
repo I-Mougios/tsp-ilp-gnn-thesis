@@ -12,20 +12,20 @@ from utils import TSPRecord, insert_one
 from tsp import TSP, generate_clustered_tsp_data
 
 project_dir = Path(__file__).parent.parent.resolve()
-env_path = project_dir / "container" / "mongo.env"
+env_path = project_dir / "data_generation_scrpts" / "mongo.env"
 load_dotenv(env_path)
 mongo_username = os.getenv("MONGO_INITDB_ROOT_USERNAME", "root")
 mongo_password = os.getenv("MONGO_INITDB_ROOT_PASSWORD", "secret")
 
-# Both application and MongoDB run on docker container
+# Both application and MongoDB run on docker data_generation_scrpts
 # then I just use the name of the service and no need to expose any port
-# Application run in container and the MongoDb run locally then
+# Application run in data_generation_scrpts and the MongoDb run locally then
 #  I have to use host.docker.internal as a special DNS that resolves the host's machine IP address
 # (no need to expose any port since application is the client connecting out to MongoDb)
 
-# When MongoDB run in container but application run in my local machine then
+# When MongoDB run in data_generation_scrpts but application run in my local machine then
 # I have to expose the port 27017 so client(application) can send request to MongoDb
-# which is hosted within a docker container
+# which is hosted within a docker data_generation_scrpts
 mongo_uri = f"mongodb://{mongo_username}:{mongo_password}@localhost:27017"
 
 
