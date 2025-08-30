@@ -26,7 +26,7 @@ class TSPGNN(torch.nn.Module):
     """Edge-prediction GNN for TSP.
 
     Args:
-        node_dim (int): Dummy node feature dimension (set to 1 since we ignore coordinates).
+        node_dim (int): Node feature dimension.
         edge_dim (int): Edge feature dimension (1 for distances).
         hidden_dim (int): Hidden layer dimension. Default: 64.
         num_heads (int): Number of GAT attention heads. Default: 4.
