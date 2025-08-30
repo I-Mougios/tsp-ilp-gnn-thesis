@@ -35,7 +35,7 @@ class TSPGNN(torch.nn.Module):
     def __init__(self, node_dim=2, edge_dim=16, hidden_dim=64, num_heads=4):
         super().__init__()
 
-        # Node encoder to capture the spatial information of the node (relative position)
+        # Node encoder to capture the spatial information of the node (relative position) -> (N X hidden_dim)
         self.node_encoder = nn.Sequential(
             nn.Linear(node_dim, hidden_dim), nn.LeakyReLU(0.2), nn.LayerNorm(hidden_dim)  # 2D coordinates → hidden_dim
         )
@@ -47,9 +47,7 @@ class TSPGNN(torch.nn.Module):
         #    - Very long distances may be completely irrelevant
         # 2. Allows learning different distance thresholds for different graphs
         # 3. Projects scalar distances into a more expressive feature space
-        # Architecture choice:
-        # - Bottleneck design (1->16->1) prevents overfitting while adding non-linearity
-        # - Final dimension remains 1 to match edge_dim and avoid architecture changes
+        # Output -> (E x edge_dim)
         # More expressive edge encoder
         self.edge_encoder = nn.Sequential(
             nn.Linear(1, 32),  # Wider network
