@@ -16,7 +16,8 @@ class NormalizeEdges(nn.Module):
     def __init__(self):
         super().__init__()
 
-    def forward(self, graph: Data) -> Data:
+    @staticmethod
+    def forward(graph: Data) -> Data:
         """Normalizes edge distances to [0, 1] in-place."""
         edge_distances = graph.edge_attr
         edge_distances = (edge_distances - edge_distances.min()) / (edge_distances.max() - edge_distances.min() + 1e-10)
