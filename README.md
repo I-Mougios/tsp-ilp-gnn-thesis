@@ -12,7 +12,7 @@ By generating optimal TSP solutions via ILP, this work trains a GNN model to app
 
 - `gnn/`: GNN model, PyTorch Geometric dataset, and utilities  
 - `tsp/`: ILP-based solver to generate optimal ground truth tours  
-- `container/`: Docker orchestration for MongoDB and app runtime  
+- `data_generation_scripts/`: Docker setu[ for MongoDB and scripts to generate solutions to TSP problems  
 - `jobs.py/`: Modular scripts for training, inference, and data management  
 - `configs/`: Configuration management using Python scripts and INI files  
 - `pytutils/`: Internal utilities for configuration and common functions
